@@ -1,0 +1,48 @@
+CREATE TABLE Sensor_Location(
+	Sensor_ID INT NOT NULL,
+	Sensor_Type VARCHAR(64),
+	Location DOUBLE,
+	Latitue DOUBLE,
+	Longitude DOUBLE,
+	PRIMARY KEY(Sensor_ID)
+);
+
+INSERT INTO Sensor_Location (Sensor_ID, Sensor_Type, Location, Latitue, Longitude)
+VALUES (value1, value2, value3, ...);
+
+
+CREATE TABLE Weather(
+	ID INT NOT NULL,
+	Sensor_ID INT NOT NULL,
+	Timestamp DATETIME,
+	Humidity DOUBLE,
+	Temperature DOUBLE,
+	PRIMARY KEY(ID),
+	FOREIGN KEY (Sensor_ID) REFERENCES Sensor_Location (Sensor_ID)
+);
+
+
+INSERT INTO Weather (ID, Sensor_ID, Timestamp, Humidity, Temperature)
+VALUES (value1, value2, value3, ...);
+
+
+CREATE TABLE particulate_matter(
+	ID INT NOT NULL,
+	Sensor_ID INT NOT NULL,
+	Timestamp DATETIME,
+	P1 DOUBLE,
+	Dur_P1 DOUBLE,
+	Ratio_P1 DOUBLE,
+	P2 DOUBLE,
+	Dur_P2 DOUBLE,
+	Ratio_P2 DOUBLE,
+	PRIMARY KEY(ID),
+	FOREIGN KEY (Sensor_ID) REFERENCES Sensor_Location (Sensor_ID)	
+);
+
+
+INSERT INTO particulate_matter (ID, Sensor_ID, Timestamp, P1, Dur_P1, Ratio_P1, P2, Dur_P2, Ratio_P2)
+VALUES (value1, value2, value3, ...);
+
+
+
