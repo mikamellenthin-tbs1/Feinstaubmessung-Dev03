@@ -1,3 +1,5 @@
+Creation of database in shell: $sqlite3 particulate_matter_measurement.db
+
 CREATE TABLE Sensor_Location(
 	Sensor_ID INT NOT NULL,
 	Sensor_Type VARCHAR(64),
