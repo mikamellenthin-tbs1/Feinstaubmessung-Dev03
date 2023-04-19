@@ -10,7 +10,7 @@ mydb = mysql.connector.connect(
 datum = input('Geben Sie ein gültige datum ein :')
 
 mycursor = mydb.cursor()
-mycursor.execute("select MIN(temperature),MAX(humidity) ,AVG(temperature) FROM weather WHERE TIMESTAMP= '%s';" % datum)
+mycursor.execute("SELECT MIN(temperature),MAX(humidity) ,AVG(temperature) FROM weather WHERE CAST(timestamp AS DATE)= '%s';" % datum)
 result = mycursor.fetchall()
 
 for row in result:

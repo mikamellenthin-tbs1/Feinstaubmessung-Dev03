@@ -21,7 +21,7 @@ def Filter(date):
     )
 
     mycursor = mydb.cursor()
-    mycursor.execute("select MIN(temperature),MAX(humidity) ,AVG(temperature) FROM weather WHERE TIMESTAMP= '%s';" % date)
+    mycursor.execute("SELECT MIN(temperature),MAX(humidity) ,AVG(temperature) FROM weather WHERE CAST(timestamp AS DATE) = '%s';" % date)
     result = mycursor.fetchall()
 
     for row in result:
