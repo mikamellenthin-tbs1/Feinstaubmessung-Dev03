@@ -10,11 +10,9 @@ import sqlite3
 #config
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-csPathSourceData = "D:/Akte/FIAW/TBS1/Fächer/LF5/aufgaben/Feinstaubmessung/Quelldaten"
-#csPathDB = "D:/Akte/FIAW/TBS1/Fächer/LF5/aufgaben/Feinstaubmessung/sqlite/particulate_matter_measurement.db"
+csPathSourceData = "**/Quelldaten"
 
-csPathDB = "D:/Akte/FIAW/TBS1/Fächer/LF5/aufgaben/Feinstaubmessung/sqlite/particulate_matter_measurement.db"
-#csPathSourceData = "D:/Akte/FIAW/TBS1/Fächer/LF5/aufgaben/Feinstaubmessung/TEST"
+csPathDB = "**/particulate_matter_measurement.db"
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #global variables
