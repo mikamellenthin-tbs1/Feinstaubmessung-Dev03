@@ -10,9 +10,9 @@ import sqlite3
 #config
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-csPathSourceData = "**/Quelldaten"
+csPathSourceData = "C:/DATA_TBS1/TBS1/Fächer/LF5/aufgaben/Feinstaubmessung/Quelldaten" #"D:/Akte/FIAW/TBS1/Fächer/LF5/aufgaben/Feinstaubmessung/Quelldaten"
 
-csPathDB = "**/particulate_matter_measurement.db"
+csPathDB = "C:/DATA_TBS1/TBS1/Fächer/LF5/aufgaben/Feinstaubmessung/sqlite/particulate_matter_measurement.db" #"D:/Akte/FIAW/TBS1/Fächer/LF5/aufgaben/Feinstaubmessung/sqlite/particulate_matter_measurement.db"
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #global variables
@@ -28,13 +28,13 @@ LastIDParticulate_matter            = 0
 #global constants
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 csSQLSensor_Location              = "INSERT INTO Sensor_Location (Sensor_ID, Sensor_Type, Location, Latitue, Longitude) values(?, ?, ?, ?, ?)"
-csSQLWeather                      = "INSERT INTO Weather (ID, Sensor_ID, Timestamp, Humidity, Temperature) values(?, ?, ?, ?, ?)"
+csSQLWeather                      = "INSERT INTO Weather (ID, Sensor_ID, Timestamp, Temperature, Humidity) values(?, ?, ?, ?, ?)"
 csSQLparticulate_matter           = "INSERT INTO particulate_matter (ID, Sensor_ID, Timestamp, P1, Dur_P1, Ratio_P1, P2, Dur_P2, Ratio_P2) values(?, ?, ?, ?, ?, ?, ?, ?, ?)"
 
 csColumnNamesWeather                    = "sensor_id;sensor_type;location;lat;lon;timestamp;temperature;humidity"
 csColumnNamesParticulate_matter         = "sensor_id;sensor_type;location;lat;lon;timestamp;P1;durP1;ratioP1;P2;durP2;ratioP2"
-
 oConnection                             = sqlite3.connect(csPathDB)
+
 
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #functions
@@ -111,7 +111,6 @@ def upDateTables():
 def updateDataArrays(row, sColumnNames):
     global LastIDWeather
     global LastIDParticulate_matter 
-
     entryTuple = []
     # biuld new tupels for sensor type
     i = 0
@@ -139,6 +138,7 @@ def updateDataArrays(row, sColumnNames):
 
 
     if sColumnNames == csColumnNamesWeather:
+        
         entryTuple = []
         entryTuple.append(LastIDWeather)
         LastIDWeather = LastIDWeather + 1

@@ -1,4 +1,8 @@
-Creation of database in shell: $sqlite3 particulate_matter_measurement.db
+Creation of database in shell: 
+	cd C:\DATA_TBS1\TBS1\Fächer\LF5\aufgaben\Feinstaubmessung\sqlite
+	sqlite3 particulate_matter_measurement.db
+
+CREATE DATABASE particulate_matter_measurement;
 
 CREATE TABLE Sensor_Location(
 	Sensor_ID INT NOT NULL,
@@ -17,8 +21,8 @@ CREATE TABLE Weather(
 	ID INT NOT NULL,
 	Sensor_ID INT NOT NULL,
 	Timestamp DATETIME,
-	Humidity DOUBLE,
 	Temperature DOUBLE,
+	Humidity DOUBLE,
 	PRIMARY KEY(ID),
 	FOREIGN KEY (Sensor_ID) REFERENCES Sensor_Location (Sensor_ID)
 );
@@ -47,4 +51,39 @@ INSERT INTO particulate_matter (ID, Sensor_ID, Timestamp, P1, Dur_P1, Ratio_P1, 
 VALUES (value1, value2, value3, ...);
 
 
+
+Select statements
+
+SELECT RowName1, RowName2, RowName3
+WHERE +++
+FROM TABLE1, TABLE2, TABLE1  
+
+SELECT ID, Sensor_ID, Temperature, Timestamp, SUBSTRING(Timestamp, 1, 10) AS DATEVALUE
+FROM Weather
+WHERE DATEVALUE = "2022-03-14";
+
+SELECT SUBSTRING(Timestamp, 1, 10) AS DATEVALUE, AVG(Temperature)
+FROM Weather
+WHERE DATEVALUE = "2022-03-14";
+
+SELECT SUBSTRING(Timestamp, 1, 10) AS DATEVALUE, AVG(Temperature) AS AVG, MIN(Temperature) AS MIN, MAX(Temperature) AS MAX 
+FROM Weather
+WHERE DATEVALUE = "2022-03-14";
+
+
+SELECT Sensor_ID, P1, P2, SUBSTRING(Weather.Timestamp, 1, 10) AS DATEVALUE, Humidity, Temperature
+FROM Sensor_Location, particulate_matter, Weather
+WHERE Sensor_Location.Sensor_ID = particulate_matter.Sensor_ID 
+AND Sensor_Location.Sensor_ID = Weather.Sensor_ID;
+
+
+
+SELECT SUBSTRING(Weather.Timestamp, 1, 10) AS DATEVALUE, Humidity, Temperature
+FROM Sensor_Location, particulate_matter, Weather
+WHERE Sensor_Location.Sensor_ID = particulate_matter.Sensor_ID
+OR Sensor_Location.Sensor_ID = Weather.Sensor_ID;
+
+SELECT Sensor_ID, P1, P2, SUBSTRING(Weather.Timestamp, 1, 10) AS DATEVALUE, Humidity, Temperature
+WHERE Sensor_Location.Sensor_ID = particulate_matter.Sensor_ID
+OR Sensor_Location.Sensor_ID = Weather.Sensor_ID;
 
