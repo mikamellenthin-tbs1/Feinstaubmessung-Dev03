@@ -54,42 +54,42 @@ VALUES (value1, value2, value3, ...);
 
 Select statements
 
-SELECT RowName1, RowName2, RowName3
-WHERE +++
-FROM TABLE1, TABLE2, TABLE1  
+	SELECT RowName1, RowName2, RowName3
+	WHERE +++
+	FROM TABLE1, TABLE2, TABLE1  
 
-SELECT ID, Sensor_ID, Temperature, Timestamp
-FROM Weather
-WHERE Timestamp LIKE "2022-03-14%";
+	SELECT ID, Sensor_ID, Temperature, Timestamp
+	FROM Weather
+	WHERE Timestamp LIKE "2022-03-14%";
 
-SELECT Timestamp, AVG(Temperature)
-FROM Weather
-WHERE Timestamp LIKE "2022-03-14%";
+	SELECT Timestamp, AVG(Temperature)
+	FROM Weather
+	WHERE Timestamp LIKE "2022-03-14%";
 
-SELECT Timestamp, AVG(Temperature) AS AVG, MIN(Temperature) AS MIN, MAX(Temperature) AS MAX 
-FROM Weather
-WHERE Timestamp LIKE "2022-03-14%";
-
-
-SELECT Sensor_ID, P1, P2, SUBSTRING(Weather.Timestamp, 1, 10) AS DATEVALUE, Humidity, Temperature
-FROM Sensor_Location, particulate_matter, Weather
-WHERE Sensor_Location.Sensor_ID = particulate_matter.Sensor_ID 
-AND Sensor_Location.Sensor_ID = Weather.Sensor_ID;
+	SELECT Timestamp, AVG(Temperature) AS AVG, MIN(Temperature) AS MIN, MAX(Temperature) AS MAX 
+	FROM Weather
+	WHERE Timestamp LIKE "2022-03-14%";
 
 
+	SELECT Sensor_ID, P1, P2, SUBSTRING(Weather.Timestamp, 1, 10) AS DATEVALUE, Humidity, Temperature
+	FROM Sensor_Location, particulate_matter, Weather
+	WHERE Sensor_Location.Sensor_ID = particulate_matter.Sensor_ID 
+	AND Sensor_Location.Sensor_ID = Weather.Sensor_ID;
 
-SELECT SUBSTRING(Weather.Timestamp, 1, 10) AS DATEVALUE, Humidity, Temperature
-FROM Sensor_Location, particulate_matter, Weather
-WHERE Sensor_Location.Sensor_ID = particulate_matter.Sensor_ID
-OR Sensor_Location.Sensor_ID = Weather.Sensor_ID;
 
-SELECT Weather.Timestamp, Humidity, Temperature
-FROM Sensor_Location, particulate_matter, Weather
-WHERE (Sensor_Location.Sensor_ID = particulate_matter.Sensor_ID
-OR Sensor_Location.Sensor_ID = Weather.Sensor_ID)
-AND Weather.Timestamp LIKE "2022-03-14%";
 
-SELECT Sensor_ID, P1, P2, SUBSTRING(Weather.Timestamp, 1, 10) AS DATEVALUE, Humidity, Temperature
-WHERE Sensor_Location.Sensor_ID = particulate_matter.Sensor_ID
-OR Sensor_Location.Sensor_ID = Weather.Sensor_ID;
+	SELECT SUBSTRING(Weather.Timestamp, 1, 10) AS DATEVALUE, Humidity, Temperature
+	FROM Sensor_Location, particulate_matter, Weather
+	WHERE Sensor_Location.Sensor_ID = particulate_matter.Sensor_ID
+	OR Sensor_Location.Sensor_ID = Weather.Sensor_ID;
+
+	SELECT Weather.Timestamp, Humidity, Temperature
+	FROM Sensor_Location, particulate_matter, Weather
+	WHERE (Sensor_Location.Sensor_ID = particulate_matter.Sensor_ID
+	OR Sensor_Location.Sensor_ID = Weather.Sensor_ID)
+	AND Weather.Timestamp LIKE "2022-03-14%";
+
+	SELECT Sensor_ID, P1, P2, SUBSTRING(Weather.Timestamp, 1, 10) AS DATEVALUE, Humidity, Temperature
+	WHERE Sensor_Location.Sensor_ID = particulate_matter.Sensor_ID
+	OR Sensor_Location.Sensor_ID = Weather.Sensor_ID;
 
