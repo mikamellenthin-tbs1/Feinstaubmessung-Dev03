@@ -1,0 +1,9 @@
+<!DOCTYPE WeatherData [
+    <!ELEMENT WeatherData (WeatherEntry*)>
+    <!ELEMENT WeatherEntry (ID, SensorID, Timestamp, Temperature, Humidity)>
+    <!ELEMENT ID (#PCDATA)>
+    <!ELEMENT SensorID (#PCDATA)>
+    <!ELEMENT Timestamp (#PCDATA)>
+    <!ELEMENT Temperature (#PCDATA)>
+    <!ELEMENT Humidity (#PCDATA)>
+]>

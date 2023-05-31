@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<SensorData>
+  <SensorEntry>
+    <Sensor_ID>3660</Sensor_ID>
+    <Sensor_Type>DHT22</Sensor_Type>
+    <Location>1846.0</Location>
+    <Latitude>51.482</Latitude>
+    <Longitude>7.224</Longitude>
+  </SensorEntry>
+  <SensorEntry>
+    <Sensor_ID>3659</Sensor_ID>
+    <Sensor_Type>SDS011</Sensor_Type>
+    <Location>1846.0</Location>
+    <Latitude>51.482</Latitude>
+    <Longitude>7.224</Longitude>
+  </SensorEntry>
+</SensorData>
